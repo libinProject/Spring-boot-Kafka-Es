@@ -1,0 +1,37 @@
+server:
+  port: 8988
+
+kafka:
+  consumer:
+    zookeeper:
+      connect: 127.0.0.1:2182
+    servers: 127.0.0.1:9092
+    enable:
+      auto:
+        commit: false
+    session:
+      timeout: 6000
+    auto:
+      commit:
+        interval: 100
+      offset:
+        reset: latest
+    topic: mhd-notice
+    group:
+      id: mhd-notice
+    concurrency: 10
+  producer:
+    servers: 127.0.0.1:9092
+    retries: 0
+    batch:
+      size: 4096
+    linger: 1
+    buffer:
+      memory: 40960
+elasticsearch:
+  ip: 127.0.0.1
+  port: 9300
+  pool: 5
+  cluster:
+    name: es-cluster
+
